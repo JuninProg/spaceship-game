@@ -1,8 +1,13 @@
+<script setup lang="ts">
+import Logo from './Logo.vue';
+</script>
+
 <template>
   <nav>
-    <a href="" class="nav__title">Spaceship Game</a>
-    <a href="" class="nav__column">Contato</a>
-    <a href="" class="nav__column">Entrar</a>
+    <Logo />
+    <p class="nav__title"><a href="">Spaceship Game</a></p>
+    <p class="nav__column"><a href="">Contato</a></p>
+    <p class="nav__column"><a href="">Entrar</a></p>
   </nav>
 </template>
 
@@ -19,11 +24,11 @@ nav {
   flex-flow: row nowrap;
   justify-content: space-between;
   background-color: black;
+  align-items: center;
 }
 
 .nav__title {
   flex: 4 1 auto;
-  padding-left: 8vw;
 }
 
 .nav__column {
