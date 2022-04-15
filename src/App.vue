@@ -7,7 +7,7 @@ import Screen from './components/Screen.vue';
 <template>
   <Navbar />
   <main>
-    <Screen />
+    <Screen class="screen" />
   </main>
   <Footer></Footer>
 </template>
@@ -29,5 +29,10 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.screen {
+  width: 800px;
+  height: 570px;
 }
 </style>

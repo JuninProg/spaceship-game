@@ -44,11 +44,15 @@ export class Spaceship {
     this.update();
     this.slowMovement();
 
+    const W_CODE = 87;
+    const A_CODE = 65;
+    const D_CODE = 68;
+
     this.movement({
-      left: this.lib.LEFT_ARROW,
-      right: this.lib.RIGHT_ARROW,
+      left: A_CODE,
+      right: D_CODE,
     });
-    this.fireGunshot(this.lib.UP_ARROW, gunshots);
+    this.fireGunshot(W_CODE, gunshots);
   }
 
   private borders() {

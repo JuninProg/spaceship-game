@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { IPlayer } from '../@types/player';
+import Game from './game/Game.vue';
 
 const players = ref<IPlayer[]>(
   [
@@ -24,55 +25,145 @@ const players = ref<IPlayer[]>(
       name: 'JFL',
       score: 1,
     },
+    {
+      id: 'asdfads',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'aasfasdfads',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'asdfadsafasfas',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'asdfadasfasfs',
+      name: 'JFL',
+      score: 1,
+    },
+    {
+      id: 'asdfads',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'aasfasdfads',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'asdfadsafasfas',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'asdfadasfasfs',
+      name: 'JFL',
+      score: 1,
+    },
+    {
+      id: 'asdfads',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'aasfasdfads',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'asdfadsafasfas',
+      name: 'JFL',
+      score: 2342342,
+    },
+    {
+      id: 'asdfads',
+      name: 'JFL',
+      score: 2342342,
+    },
   ].sort((a, b) => {
     if (a.score > b.score) return -1;
     else return 1;
   })
 );
+
+let isRunning = ref(false);
+
+function start() {
+  isRunning.value = true;
+}
 </script>
 
 <template>
-  <div class="screen">
-    <div class="rank">
-      <h2>TOP PLAYERS</h2>
-      <div
-        class="rank__row"
-        v-for="(player, index) in players"
-        :key="player.id"
-      >
-        <p>{{ index }}</p>
+  <div v-if="!isRunning" class="rank">
+    <div class="rank__title">
+      <p>TOP PLAYERS</p>
+    </div>
+    <div class="rank__container">
+      <div class="rank__row">
+        <p>RANK</p>
+        <p>NAME</p>
+        <p>SCORE</p>
+      </div>
+      <br />
+      <div class="rank__row" v-for="(player, index) in players" :key="index">
+        <p>1</p>
         <p>{{ player.name }}</p>
         <p>{{ player.score }}</p>
       </div>
     </div>
+    <div class="rank__button-start">
+      <button @click="start">JOGAR</button>
+    </div>
   </div>
+  <Game v-else />
 </template>
 
 <style scoped>
-.screen {
-  color: antiquewhite;
-  border: 2px solid red;
-  width: 800px;
-  height: 570px;
+p {
+  margin: 0;
+  width: 100%;
 }
 
 .rank {
+  background-color: black;
+  color: antiquewhite;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background-color: black;
-  height: 100%;
+}
+
+.rank__title {
+  flex: 2 2 auto;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.rank__button-start {
+  flex: 2 2 auto;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  font-size: 20px;
+  width: 100px;
+}
+
+.rank__container {
+  width: 80%;
+  flex: 4 4 auto;
 }
 
 .rank__row {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-items: center;
-  width: 50%;
-}
-
-.rank__row p {
-  /* flex: 1 1 auto; */
+  text-align: center;
 }
 </style>
