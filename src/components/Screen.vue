@@ -116,8 +116,9 @@ function start() {
         <p>{{ player.score }}</p>
       </div>
     </div>
-    <div class="rank__button-start">
+    <div class="rank__buttons">
       <button @click="start">JOGAR</button>
+      <button>COMO JOGAR</button>
     </div>
   </div>
   <Game v-else />
@@ -144,15 +145,23 @@ p {
   font-size: 24px;
 }
 
-.rank__button-start {
-  flex: 2 2 auto;
+.rank__buttons {
+  flex: 3 3 auto;
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  flex-flow: column nowrap;
 }
 
 button {
   font-size: 20px;
   width: 100px;
+  background-color: antiquewhite;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .rank__container {
