@@ -14,8 +14,12 @@ import Logo from './Logo.vue';
 <style scoped>
 a {
   text-decoration: none;
-  color: antiquewhite;
+  color: white;
   margin: 3vh 0;
+}
+
+a:hover {
+  color: aliceblue;
 }
 
 nav {

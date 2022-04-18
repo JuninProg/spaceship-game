@@ -18,6 +18,6 @@ footer {
 
 .footer_p {
   margin: 0;
-  color: antiquewhite;
+  color: white;
 }
 </style>

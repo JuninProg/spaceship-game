@@ -6,7 +6,7 @@
 
 <style>
 figure {
-  background-color: antiquewhite;
+  background-color: white;
   border-radius: 50%;
   display: inline-block;
   height: 42px;
@@ -14,6 +14,10 @@ figure {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+figure:hover {
+  background-color: aliceblue;
 }
 
 img {

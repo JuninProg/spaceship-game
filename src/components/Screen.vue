@@ -1,105 +1,91 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { IPlayer } from '../@types/player';
 import Game from './game/Game.vue';
+import { usePlayerStore } from '../stores/player';
 
-const players = ref<IPlayer[]>(
-  [
-    {
-      id: 'asdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'aasfasdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfadsafasfas',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfadasfasfs',
-      name: 'JFL',
-      score: 1,
-    },
-    {
-      id: 'asdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'aasfasdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfadsafasfas',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfadasfasfs',
-      name: 'JFL',
-      score: 1,
-    },
-    {
-      id: 'asdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'aasfasdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfadsafasfas',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfadasfasfs',
-      name: 'JFL',
-      score: 1,
-    },
-    {
-      id: 'asdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'aasfasdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfadsafasfas',
-      name: 'JFL',
-      score: 2342342,
-    },
-    {
-      id: 'asdfads',
-      name: 'JFL',
-      score: 2342342,
-    },
-  ].sort((a, b) => {
-    if (a.score > b.score) return -1;
-    else return 1;
-  })
-);
+const playerStore = usePlayerStore();
 
-let isRunning = ref(false);
+const players = playerStore.players;
+
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+
+playerStore.addPlayer({
+  name: 'TEST',
+  score: 134123,
+});
+playerStore.addPlayer({
+  name: 'JFL',
+  score: 123,
+});
+
+const screens = ref<'rank' | 'how_to_play' | 'before_play' | 'play'>('rank');
 
 function start() {
-  isRunning.value = true;
+  screens.value = 'play';
 }
 </script>
 
 <template>
-  <div v-if="!isRunning" class="rank">
+  <div v-if="screens === 'rank'" class="rank">
     <div class="rank__title">
       <p>TOP PLAYERS</p>
     </div>
@@ -110,8 +96,12 @@ function start() {
         <p>SCORE</p>
       </div>
       <br />
-      <div class="rank__row" v-for="(player, index) in players" :key="index">
-        <p>1</p>
+      <div
+        class="rank__row"
+        v-for="(player, index) in players"
+        :key="player.id"
+      >
+        <p>{{ index + 1 }}</p>
         <p>{{ player.name }}</p>
         <p>{{ player.score }}</p>
       </div>
@@ -121,7 +111,7 @@ function start() {
       <button>COMO JOGAR</button>
     </div>
   </div>
-  <Game v-else />
+  <Game v-else-if="screens === 'play'" />
 </template>
 
 <style scoped>
@@ -132,21 +122,21 @@ p {
 
 .rank {
   background-color: black;
-  color: antiquewhite;
+  color: white;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 
 .rank__title {
-  flex: 2 2 auto;
+  height: 10%;
   display: flex;
   align-items: center;
   font-size: 24px;
 }
 
 .rank__buttons {
-  flex: 3 3 auto;
+  height: 20%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -156,17 +146,18 @@ p {
 button {
   font-size: 20px;
   width: 100px;
-  background-color: antiquewhite;
+  background-color: white;
   border: none;
 }
 
 button:hover {
   cursor: pointer;
+  background-color: aliceblue;
 }
 
 .rank__container {
   width: 80%;
-  flex: 4 4 auto;
+  height: 70%;
 }
 
 .rank__row {
