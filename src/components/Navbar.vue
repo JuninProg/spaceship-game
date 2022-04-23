@@ -6,8 +6,8 @@ import Logo from './Logo.vue';
   <nav>
     <Logo />
     <p class="nav__title"><a href="">Spaceship Game</a></p>
-    <p class="nav__column"><a href="">Contato</a></p>
-    <p class="nav__column"><a href="">Entrar</a></p>
+    <p class="nav__column"><a href="">Contact</a></p>
+    <p class="nav__column"><a href="">Login</a></p>
   </nav>
 </template>
 
