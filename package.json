@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "p5": "^1.4.1",
+    "p5.play": "^2.3.0",
     "pinia": "^2.0.13",
     "uuid": "^8.3.2",
     "vue": "^3.2.25"
